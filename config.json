@@ -1,0 +1,9 @@
+{
+    "basicAuth": {
+        "name": "admin",
+        "password": "admin"
+    },
+    "port": 3308,
+    "mongoUrl": "localhost/third",
+    "limit": 100
+}

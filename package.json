@@ -1,0 +1,26 @@
+{
+  "name": "momo",
+  "version": "1.0.0",
+  "description": "simple , fast mongodb data viewer and analyzer , create your dashboard in minutes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tans/momo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tans/momo/issues"
+  },
+  "homepage": "https://github.com/tans/momo#readme",
+  "dependencies": {
+    "koa": "^2.11.0",
+    "koa-basic-auth": "^4.0.0",
+    "koa-router": "^8.0.6",
+    "monk": "^7.1.2",
+    "pug": "^2.0.4"
+  }
+}

@@ -1,0 +1,14 @@
+doctype
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        title momo
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/basscss/8.1.0/css/basscss.min.css")
+
+    body
+        each pannel in pannels
+            div.border.border--silver.rounded.p1.m1
+                div.h4=pannel.self.collection
+                    each row in pannel.data
+                        pre=JSON.stringify(row, null, 2)
+
