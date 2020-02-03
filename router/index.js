@@ -33,6 +33,16 @@ router.get("/", async ctx => {
       )
     }
   };
+  const todayFilter = {
+    _id: {
+      $gt: objectIdWithTimestamp(
+        moment()
+          .add(-1, "day")
+          .toDate()
+          .getTime()
+      )
+    }
+  };
   for (const col of collectionList) {
     let group = await col.aggregate([
       { $match: filter },
@@ -49,17 +59,19 @@ router.get("/", async ctx => {
         }
       }
     ]);
-    series = group
+    const series = group
       .sort((a, b) => {
         return a._id.date > b._id.date ? 1 : -1;
       })
       .map(i => {
         return {
-          bin: new Date(i._id.date),
+          time: new Date(i._id.date),
           value: i.cnt
         };
       });
-    pannels.push({ name: col.name, series });
+    const count = await col.count();
+    const todayCount = await col.count(todayFilter);
+    pannels.push({ name: col.name, series, count, todayCount });
   }
   await ctx.render("index", { pannels });
 });
