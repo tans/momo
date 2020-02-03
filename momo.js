@@ -31,25 +31,7 @@ const app = new Koa();
 //   app.use(auth({ name: conf.basicAuth.name, pass: conf.basicAuth.pass }));
 // }
 
-router.get("/", async ctx => {
-  const isSet = fs.existsSync("./momo.json");
-  if (!isSet) {
-    return (ctx.body = "create momo.json first");
-  }
-  const momo = require("./momo.json");
-  const pannels = [];
-  for (const pannel of momo.pannels) {
-    if (pannel.type == "data") {
-      const collection = db.get(pannel.collection);
-      const data = await collection.find(pannel.selector || {}, {
-        limit: conf.limit,
-        sort: pannel.sort || { _id: -1 }
-      });
-      pannels.push({ data, self: pannel });
-    }
-  }
-  ctx.body = await render({ pannels });
-});
+router.get("/", async ctx => {});
 
 app.use(router.routes());
 app.listen(conf.port, function() {
