@@ -4,6 +4,6 @@
         "password": "admin"
     },
     "port": 3308,
-    "mongoUrl": "localhost/third",
+    "mongoUrl": "localhost/test",
     "limit": 100
 }

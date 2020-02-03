@@ -1,38 +1,41 @@
 const auth = require("koa-basic-auth");
 const monk = require("monk");
-const pug = require("pug");
+const Pug = require("koa-pug");
 const Koa = require("koa");
-const fs = require("fs");
-const Router = require("koa-router");
+const path = require("path");
+const serve = require("koa-static");
 
-const router = new Router();
-const render = pug.compileFile("index.pug");
 const conf = require("./config");
 
-const db = monk(conf.mongoUrl);
+const router = require("./router");
 const app = new Koa();
 
-// if (conf.basicAuth && conf.basicAuth.name) {
-//   // custom 401 handling
-//   app.use(async (ctx, next) => {
-//     try {
-//       await next();
-//     } catch (err) {
-//       if (401 == err.status) {
-//         ctx.status = 401;
-//         ctx.set("WWW-Authenticate", "Basic");
-//         ctx.body = "basic auth had set";
-//       } else {
-//         throw err;
-//       }
-//     }
-//   });
+const pug = new Pug({
+  viewPath: path.resolve(__dirname, "./views"),
+  locals: {
+    /* variables and helpers */
+  },
+  //   basedir: "path/for/pug/extends",
+  //   helperPath: [
+  //     "path/to/pug/helpers",
+  //     { random: "path/to/lib/random.js" },
+  //     { _: require("lodash") }
+  //   ],
+  app: app // Binding `ctx.render()`, equals to pug.use(app)
+});
 
-//   app.use(auth({ name: conf.basicAuth.name, pass: conf.basicAuth.pass }));
-// }
+const db = monk(conf.mongoUrl);
 
-router.get("/", async ctx => {});
+if (conf.basicAuth && conf.basicAuth.name) {
+  app.use(auth({ name: conf.basicAuth.name, pass: conf.basicAuth.pass }));
+}
+app.use(serve(path.join(__dirname, "public")));
 
+app.use(async (ctx, next) => {
+  console.log(ctx.path);
+  ctx.db = db;
+  await next();
+});
 app.use(router.routes());
 app.listen(conf.port, function() {
   console.log(`listening on port ${conf.port}`);
