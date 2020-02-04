@@ -1,22 +1,25 @@
+extends layout.pug
 
-            each pannel in pannels
-                div.inline-block.h6
-                    .flex.border.p1.m1.border-silver.rounded.bold
-                        div.p1(style="width:80px")=pannel.name
-                        div.p1(style="width:60px").gray=pannel.count
-                        div.p1(style="width:60px").green=pannel.todayCount
-                        div.p1(style="width:140px")
-                            svg.chart(id=pannel.name)
-                            script(type="module").
-                                var #{pannel.name}_chart = new BarChart({
-                                    target: document.getElementById('#{pannel.name}'),
-                                    axis:false,
-                                    width:120,
-                                    height:20,
-                                }).render(!{JSON.stringify(pannel.series)}.map(function(i){
-                                    return {
-                                        bin: new Date(i.time),
-                                        value: i.value
-                                    }
-                                }));
+block main
+    each pannel in pannels
+        div.inline-block.h6
+            .flex.border.p1.m1.border-silver.rounded.bold
+                div.p1(style="width:80px")=pannel.name
+                div.p1(style="width:60px").gray=pannel.count
+                div.p1(style="width:60px").green=pannel.todayCount
+                div.p1(style="width:140px")
+                    svg.chart(id=pannel.name)
+                    script(type="module").
+                        var #{pannel.name}_chart = new BarChart({
+                            target: document.getElementById('#{pannel.name}'),
+                            axis:false,
+                            width:120,
+                            height:20,
+                        }).render(!{JSON.stringify(pannel.series)}.map(function(i){
+                            return {
+                                bin: new Date(i.time),
+                                value: i.value
+                            }
+                        }));
 
+    
