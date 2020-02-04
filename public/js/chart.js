@@ -226,7 +226,7 @@ class BarChart {
     height: 130,
 
     // margin
-    margin: { top: 15, right: 0, bottom: 35, left: 60 },
+    margin: { top: 15, right: 10, bottom: 35, left: 60 },
 
     // enable axis
     axis: true,
