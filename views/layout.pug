@@ -1,0 +1,79 @@
+doctype
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        title momo
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/basscss/8.1.0/css/basscss.min.css")
+        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/basscss-colors@2.2.0/css/colors.css")
+        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/basscss-border-colors@2.1.0/css/border-colors.css")
+        script(src="https://cdn.jsdelivr.net/npm/d3@4.12.2/build/d3.min.js")
+        script(src="/js/chart.js")
+        style.
+            .red {
+                color: RGB(243, 42, 100)
+            }
+            .green {
+                color: RGB(19, 170, 82);
+            }
+            .chart {
+                /*border: 1px dotted #ddd;*/
+            }
+
+            .chart .column {
+                fill: RGB(230, 237, 244);
+            }
+
+            .chart .bar {
+                fill: RGB(19, 170, 82);
+            }
+
+            .chart .axis text {
+                font: 9px sans-serif;
+            }
+
+            .chart .axis path,
+            .chart .axis line {
+                fill: none;
+                stroke: RGB(230, 237, 244);
+                stroke-width: 1.5px;
+                shape-rendering: crispEdges;
+            }
+
+            .chart .axis path {
+                display: none;
+            }
+
+
+            .chart .column {
+            fill: RGB(230, 237, 244);
+            }
+
+            .chart .line {
+            stroke: RGB(243, 42, 100);
+            stroke-width: 3px;
+            fill: none;
+            }
+
+            .chart .axis text {
+            font: 9px sans-serif;
+            }
+
+            .chart .axis path,
+            .chart .axis line {
+                fill: none;
+                stroke: RGB(230, 237, 244);
+                stroke-width: 1.5px;
+                shape-rendering: crispEdges;
+            }
+
+            .chart .axis path {
+            display: none;
+            }
+
+        script.
+    body
+        .m1
+            img(src="/img/logo.png", style="width:100px")
+        .div
+            block main
