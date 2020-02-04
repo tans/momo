@@ -35,7 +35,7 @@ router.get("/", async ctx => {
       )
     }
   };
-  const days = _.range(1, 7).map(i =>
+  const days = _.range(1, 8).map(i =>
     moment()
       .add(-i, "day")
       .format("YYYY-MM-DD")
@@ -106,7 +106,7 @@ router.get("/col/:col", async ctx => {
       )
     }
   };
-  const days = _.range(1, 30).map(i =>
+  const days = _.range(1, 31).map(i =>
     moment()
       .add(-i, "day")
       .format("YYYY-MM-DD")
