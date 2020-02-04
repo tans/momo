@@ -35,11 +35,14 @@ router.get("/", async ctx => {
       )
     }
   };
-  const days = _.range(1, 8).map(i =>
-    moment()
-      .add(-i, "day")
-      .format("YYYY-MM-DD")
-  );
+  const days = _.range(1, 8)
+    .map(i =>
+      moment()
+        .add(-i, "day")
+
+        .format("YYYY-MM-DD")
+    )
+    .reverse();
   const todayFilter = {
     _id: {
       $gt: objectIdWithTimestamp(
@@ -66,16 +69,12 @@ router.get("/", async ctx => {
         }
       }
     ]);
-    let series = group
-      .sort((a, b) => {
-        return a._id.date > b._id.date ? 1 : -1;
-      })
-      .map(i => {
-        return {
-          date: i._id.date,
-          value: i.cnt
-        };
-      });
+    let series = group.map(i => {
+      return {
+        date: i._id.date,
+        value: i.cnt
+      };
+    });
 
     let fullfilSeries = days.map(day => {
       var finded = _.find(series, function(s) {
@@ -106,11 +105,13 @@ router.get("/col/:col", async ctx => {
       )
     }
   };
-  const days = _.range(1, 31).map(i =>
-    moment()
-      .add(-i, "day")
-      .format("YYYY-MM-DD")
-  );
+  const days = _.range(1, 31)
+    .map(i =>
+      moment()
+        .add(-i, "day")
+        .format("YYYY-MM-DD")
+    )
+    .reverse();
   const todayFilter = {
     _id: {
       $gt: objectIdWithTimestamp(
@@ -140,16 +141,12 @@ router.get("/col/:col", async ctx => {
     }
   ]);
 
-  let series = group
-    .sort((a, b) => {
-      return a._id.date > b._id.date ? 1 : -1;
-    })
-    .map(i => {
-      return {
-        date: i._id.date,
-        value: i.cnt
-      };
-    });
+  let series = group.map(i => {
+    return {
+      date: i._id.date,
+      value: i.cnt
+    };
+  });
 
   let fullfilSeries = days.map(day => {
     var finded = _.find(series, function(s) {
