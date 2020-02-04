@@ -35,4 +35,5 @@ visit with your bowser at `http://localhost:3308`
 ## ScreenShot
 
 ![index screenshot](/public/screenshot/index.png)
+![index screenshot](/public/screenshot/col.png)
 
