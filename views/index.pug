@@ -3,7 +3,7 @@ extends layout.pug
 block main
     each pannel in pannels
         div.inline-block.h6
-            .flex.border.p1.m1.border-silver.rounded.bold
+            a.flex.border.p1.m1.border-silver.rounded.bold(href="/col/"+pannel.name)
                 div.p1(style="width:80px")=pannel.name
                 div.p1(style="width:60px").gray=pannel.count
                 div.p1(style="width:60px").green=pannel.todayCount
@@ -22,4 +22,3 @@ block main
                             }
                         }));
 
-    

@@ -34,6 +34,7 @@ app.use(serve(path.join(__dirname, "public")));
 app.use(async (ctx, next) => {
   console.log(ctx.path);
   ctx.db = db;
+  ctx.conf = conf;
   await next();
 });
 app.use(router.routes());

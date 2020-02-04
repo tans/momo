@@ -1,0 +1,28 @@
+extends layout.pug
+
+block main
+    style.
+        pre {
+            font-size:11px;
+            font-weight:bold;
+        }
+
+    h1.p1.m1.h2=name
+    div.p1.m1
+        svg.chart(id=name)
+        script.
+            var #{name}_chart = new BarChart({
+                target: document.getElementById('#{name}'),
+
+                height:100,
+            }).render(!{JSON.stringify(series)}.map(function(i){
+                return {
+                    bin: new Date(i.time),
+                    value: i.value
+                }
+            }));
+
+    each doc,i in docs
+        .relative.h6.m1.p1.py2.inline-block.border.overflow-auto.border-silver(style="width:300px;height:400px")
+            .h6.span.top-0.left-0.p0.px2.absolute.bg-silver.bold.green=i+1
+            pre.p0.m0=pretty(doc,'',1)

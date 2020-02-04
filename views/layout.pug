@@ -7,9 +7,15 @@ html(lang='en')
         link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/basscss/8.1.0/css/basscss.min.css")
         link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/basscss-colors@2.2.0/css/colors.css")
         link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/basscss-border-colors@2.1.0/css/border-colors.css")
+        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/basscss-background-colors@2.1.0/css/background-colors.css")
         script(src="https://cdn.jsdelivr.net/npm/d3@4.12.2/build/d3.min.js")
         script(src="/js/chart.js")
+
         style.
+            a {
+                text-decoration:none;
+                color: inherit;
+            }
             .red {
                 color: RGB(243, 42, 100)
             }
@@ -74,6 +80,7 @@ html(lang='en')
         script.
     body
         .m1
-            img(src="/img/logo.png", style="width:100px")
+            a(href="/")
+                img(src="/img/logo.png", style="width:100px")
         .div
             block main
