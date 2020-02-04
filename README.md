@@ -2,7 +2,7 @@
 
 ![logo](/public/img/logo.png)
 
-simple , fast mongodb data viewer and analyzer , dev for personal or small business project
+super *fast* mongodb data viewer and analyzer , dev for personal or small business project
 
 momo is a web applicaiton, you can install it in your server or computer.
 
