@@ -389,7 +389,7 @@ class BarChart {
     const yExtent = yDomain || d3.extent(data, d => d.value);
 
     const xd = x.domain(xDomain || d3.extent(data, d => d.bin));
-    const yd = y.domain([yExtent[0], yExtent[1] > 20 ? yExtent[1] : 20]);
+    const yd = y.domain([yExtent[0], Math.max(yExtent[1], 10)]);
 
     if (color) color.domain(yExtent);
 
