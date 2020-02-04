@@ -13,7 +13,7 @@ block main
                         var #{pannel.name}_chart = new BarChart({
                             target: document.getElementById('#{pannel.name}'),
                             axis:false,
-                            width:120,
+                            width:130,
                             height:20,
                         }).render(!{JSON.stringify(pannel.series)}.map(function(i){
                             return {
