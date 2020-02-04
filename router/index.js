@@ -1,6 +1,7 @@
 const Router = require("koa-router");
 const moment = require("moment");
 const monk = require("monk");
+const _ = require("lodash");
 const router = new Router();
 
 function objectIdWithTimestamp(timestamp) {
@@ -33,6 +34,11 @@ router.get("/", async ctx => {
       )
     }
   };
+  const days = [-7, -6, -5, -4, -3, -2, -1].map(i =>
+    moment()
+      .add(i, "day")
+      .format("YYYY-MM-DD")
+  );
   const todayFilter = {
     _id: {
       $gt: objectIdWithTimestamp(
@@ -59,19 +65,29 @@ router.get("/", async ctx => {
         }
       }
     ]);
-    const series = group
+    let series = group
       .sort((a, b) => {
         return a._id.date > b._id.date ? 1 : -1;
       })
       .map(i => {
         return {
-          time: new Date(i._id.date),
+          date: i._id.date,
           value: i.cnt
         };
       });
+
+    let fullfilSeries = days.map(day => {
+      var finded = _.find(series, function(s) {
+        return s.date == day;
+      });
+      return {
+        time: day,
+        value: finded ? finded.value : 0
+      };
+    });
     const count = await col.count();
     const todayCount = await col.count(todayFilter);
-    pannels.push({ name: col.name, series, count, todayCount });
+    pannels.push({ name: col.name, series: fullfilSeries, count, todayCount });
   }
   await ctx.render("index", { pannels });
 });

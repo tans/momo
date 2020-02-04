@@ -3,8 +3,10 @@ html(lang='en')
     head
         meta(charset='utf-8')
         title momo
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
         link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/basscss/8.1.0/css/basscss.min.css")
-        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/basscss-colors@2.2.0/css/colors.css", attr)
+        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/basscss-colors@2.2.0/css/colors.css")
+        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/basscss-border-colors@2.1.0/css/border-colors.css")
         script(src="https://cdn.jsdelivr.net/npm/d3@4.12.2/build/d3.min.js")
         script(src="/js/chart.js")
         style.
@@ -68,24 +70,27 @@ html(lang='en')
 
         script.
     body
-        each pannel in pannels
-            .p1.m1
-                h2.h4.m0.p0=pannel.name
-                    span.gray.h6.ml2=pannel.count
-                    span.gray.h6 /
-                    span.bold.red.h6=pannel.todayCount
-                svg.chart(id=pannel.name)
-                script(type="module").
-                    var #{pannel.name}_chart = new LineChart({
-                        target: document.getElementById('#{pannel.name}'),
-                        nice: true,
-                        width:400,
-                        height:120,
-                        xTicks: 3,
-                    }).render(!{JSON.stringify(pannel.series)}.map(function(i){
-                        return {
-                            time: new Date(i.time),
-                            value: i.value
-                        }
-                    }));
+        .m1
+            img(src="/img/logo.png", style="width:100px")
+        .div
+            each pannel in pannels
+                div.inline-block.h6
+                    .flex.border.p1.m1.border-silver.rounded.bold
+                        div.p1(style="width:80px")=pannel.name
+                        div.p1(style="width:60px").gray=pannel.count
+                        div.p1(style="width:60px").red=pannel.todayCount
+                        div.p1(style="width:140px")
+                            svg.chart(id=pannel.name)
+                            script(type="module").
+                                var #{pannel.name}_chart = new BarChart({
+                                    target: document.getElementById('#{pannel.name}'),
+                                    axis:false,
+                                    width:120,
+                                    height:20,
+                                }).render(!{JSON.stringify(pannel.series)}.map(function(i){
+                                    return {
+                                        bin: new Date(i.time),
+                                        value: i.value
+                                    }
+                                }));
 
