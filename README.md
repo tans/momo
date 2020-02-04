@@ -1,10 +1,11 @@
 # momo - mongodb monitor
 
-simple , fast mongodb data viewer and analyzer , create your dashboard in minutes.
+[logo](public/img/logo2.png | width:100)
+
+simple , fast mongodb data viewer and analyzer , dev for personal or small business project
 
 momo is a web applicaiton, you can install it in your server or computer.
 
-momo has a basicauth you can config in conf.json, and it just a data viewer. feel free to use in your server.
 
 ## Installation
 
@@ -26,10 +27,12 @@ visit with your bowser at `http://localhost:3308`
         "password": ""
     },
     "port": 3308,  //listen port
-    "mongourl": "localhost", //  mongo url
-    "limit": 100
+    "mongourl": "localhost/test", //  mongo url
 }
-
 ```
 
+
+## ScreenShot
+
+[logo](public/screenshot/index.jpg | width:400)
 

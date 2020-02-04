@@ -92,4 +92,5 @@ router.get("/", async ctx => {
   await ctx.render("index", { pannels });
 });
 
+router.get("/");
 module.exports = router;
