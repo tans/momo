@@ -1,6 +1,6 @@
 # momo - mongodb monitor
 
-![logo](public/img/logo2.png | width=100)
+![logo](/public/img/logo.png)
 
 simple , fast mongodb data viewer and analyzer , dev for personal or small business project
 
@@ -34,5 +34,5 @@ visit with your bowser at `http://localhost:3308`
 
 ## ScreenShot
 
-![index screenshot](public/screenshot/index.jpg | width=400)
+![index screenshot](/public/screenshot/index.jpg)
 
