@@ -13,6 +13,9 @@ html(lang='en')
             .red {
                 color: RGB(243, 42, 100)
             }
+            .green {
+                color: RGB(19, 170, 82);
+            }
             .chart {
                 /*border: 1px dotted #ddd;*/
             }
@@ -22,7 +25,7 @@ html(lang='en')
             }
 
             .chart .bar {
-                fill: RGB(243, 42, 100);
+                fill: RGB(19, 170, 82);
             }
 
             .chart .axis text {
@@ -58,10 +61,10 @@ html(lang='en')
 
             .chart .axis path,
             .chart .axis line {
-            fill: none;
-            stroke: RGB(230, 237, 244);
-            stroke-width: 1.5px;
-            shape-rendering: crispEdges;
+                fill: none;
+                stroke: RGB(230, 237, 244);
+                stroke-width: 1.5px;
+                shape-rendering: crispEdges;
             }
 
             .chart .axis path {
@@ -78,7 +81,7 @@ html(lang='en')
                     .flex.border.p1.m1.border-silver.rounded.bold
                         div.p1(style="width:80px")=pannel.name
                         div.p1(style="width:60px").gray=pannel.count
-                        div.p1(style="width:60px").red=pannel.todayCount
+                        div.p1(style="width:60px").green=pannel.todayCount
                         div.p1(style="width:140px")
                             svg.chart(id=pannel.name)
                             script(type="module").
