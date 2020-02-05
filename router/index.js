@@ -98,14 +98,14 @@ router.get("/col/:col", async ctx => {
     _id: {
       $gt: objectIdWithTimestamp(
         moment()
-          .add(-30, "day")
+          .add(-29, "day")
           .startOf("D")
           .toDate()
           .getTime()
       )
     }
   };
-  const days = _.range(0, 31)
+  const days = _.range(0, 30)
     .map(i =>
       moment()
         .add(-i, "day")
