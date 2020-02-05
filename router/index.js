@@ -47,7 +47,6 @@ router.get("/", async ctx => {
     _id: {
       $gt: objectIdWithTimestamp(
         moment()
-          .add(-1, "day")
           .startOf("D")
           .toDate()
           .getTime()
@@ -118,7 +117,6 @@ router.get("/col/:col", async ctx => {
     _id: {
       $gt: objectIdWithTimestamp(
         moment()
-          .add(-1, "day")
           .startOf("D")
           .toDate()
           .getTime()
