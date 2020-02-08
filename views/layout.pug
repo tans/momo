@@ -4,13 +4,17 @@ html(lang='en')
         meta(charset='utf-8')
         title momo
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/basscss/8.1.0/css/basscss.min.css")
-        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/basscss-colors@2.2.0/css/colors.css")
-        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/basscss-border-colors@2.1.0/css/border-colors.css")
-        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/basscss-background-colors@2.1.0/css/background-colors.css")
-        script(src="https://cdn.jsdelivr.net/npm/d3@4.12.2/build/d3.min.js")
+        link(rel="stylesheet", href="/css/basscss.css")
+        link(rel="stylesheet", href="/css/btns.css")
+        link(rel="stylesheet", href="/css/colors.css")
+        link(rel="stylesheet", href="/css/font.css")
+        link(rel="stylesheet", href="/css/main.css")
+        script(src="/js/d3.min.js")
         script(src="/js/chart.js")
-
+        script(src="/js/axios.min.js")
+        script(src="/js/vue.min.js")
+        script(src="/js/jquery.min.js")
+        script(src="/js/lodash.min.js")
         style.
             a {
                 text-decoration:none;
@@ -27,6 +31,7 @@ html(lang='en')
             }
             .chart {
                 /*border: 1px dotted #ddd;*/
+                overflow: overlay;
             }
 
             .chart .column {
@@ -82,8 +87,10 @@ html(lang='en')
 
         script.
     body
-        .m1
-            a(href="/")
-                img(src="/img/logo.png", style="width:100px")
+        .flex
+            .m1(style="flex:1")
+                a(href="/")
+                    img(src="/img/logo.png", style="width:100px")
+            a.bold(href="logout") Logout
         .div
             block main

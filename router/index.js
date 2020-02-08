@@ -123,7 +123,7 @@ router.get("/col/:col", async ctx => {
     }
   };
 
-  const docs = await col.find({}, { limit: ctx.conf.limit, sort: { _id: -1 } });
+  const docs = await col.find({}, { limit: 50, sort: { _id: -1 } });
 
   let group = await col.aggregate([
     { $match: filter },

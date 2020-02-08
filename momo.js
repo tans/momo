@@ -1,12 +1,9 @@
-const auth = require("koa-basic-auth");
 const monk = require("monk");
 const Pug = require("koa-pug");
 const Koa = require("koa");
 const path = require("path");
 const serve = require("koa-static");
-
-const conf = require("./config");
-
+const koaBody = require("koa-body");
 const router = require("./router");
 const app = new Koa();
 
@@ -24,20 +21,32 @@ const pug = new Pug({
   app: app // Binding `ctx.render()`, equals to pug.use(app)
 });
 
-const db = monk(conf.mongoUrl);
-
-if (conf.basicAuth && conf.basicAuth.name) {
-  app.use(auth({ name: conf.basicAuth.name, pass: conf.basicAuth.pass }));
-}
 app.use(serve(path.join(__dirname, "public")));
 
+let db = null;
 app.use(async (ctx, next) => {
-  console.log(ctx.path);
+  if (!db && ctx.path != "/connection") {
+    return ctx.redirect("/connection");
+  }
   ctx.db = db;
-  ctx.conf = conf;
   await next();
 });
+
+router.get("/connection", async ctx => {
+  await ctx.render("connection");
+});
+
+router.post("/connection", async ctx => {
+  db = monk(ctx.request.body.url);
+  ctx.body = "ok";
+});
+
+router.get("/logout", async ctx => {
+  ctx.db.close();
+  ctx.redirect("/connection");
+});
+app.use(koaBody({}));
 app.use(router.routes());
-app.listen(conf.port, function() {
-  console.log(`listening on port ${conf.port}`);
+app.listen(28018, function() {
+  console.log(`listening on port 28018`);
 });

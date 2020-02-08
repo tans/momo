@@ -1,0 +1,37 @@
+extends layout.pug
+
+block main
+    #app
+        .mx-auto.border.border--silver.rounded.py4.px1.m3.flex.items-end(style="max-width:420px")
+            span.bold.px1 mongo url:
+            input#con-input(type='text',v-model="url",style="width:200px;",)
+
+            button.btn.mx1(@click="connect(url)") connect
+        .center.mx-auto(style="max-width:420px")
+            h3.gray history connections
+            div.border.border--silver.rounded.p1.m1.dim(v-for="history in histories",@click="connect(history)") {{history}}
+
+
+    script.
+        var histories = localStorage.getItem('histories')
+        histories = JSON.parse( (histories == 'null' || !histories) ?'[]': histories );
+
+        var app = new Vue({
+            el: '#app',
+            data: function(){
+                return {histories, url:''}
+            },
+            methods: {
+                connect:function(url){
+                    axios.post('/connection', {url: url}).then(function(){
+                    try{
+
+                        histories.push($('#con-input').val())
+                        histories = _.uniq(histories)
+                        localStorage.setItem('histories', JSON.stringify(histories))
+                    }catch(err){console.log(err)}
+                        location.href='/'
+                    })
+                }
+            }
+        })

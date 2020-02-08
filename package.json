@@ -20,7 +20,7 @@
   "dependencies": {
     "cson": "^6.9.0",
     "koa": "^2.11.0",
-    "koa-basic-auth": "^4.0.0",
+    "koa-body": "^4.1.1",
     "koa-pug": "^4.0.3",
     "koa-router": "^8.0.6",
     "koa-static": "^5.0.0",
@@ -28,5 +28,9 @@
     "moment": "^2.24.0",
     "monk": "^7.1.2",
     "pug": "^2.0.4"
+  },
+  "pkg": {
+    "scripts": "build/**/*.js",
+    "assets": ["view/*", "public/**/*","public/***/*"]
   }
 }
