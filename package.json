@@ -30,7 +30,6 @@
     "pug": "^2.0.4"
   },
   "pkg": {
-    "scripts": "build/**/*.js",
     "assets": ["view/*", "public/**/*","public/***/*"]
   }
 }
