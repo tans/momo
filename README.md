@@ -6,6 +6,12 @@ super *fast* mongodb data viewer and analyzer , dev for personal or small busine
 
 momo is a web applicaiton, you can install it in your server or computer.
 
+## Download
+
+package executable download for linux, mac and windows
+
+https://github.com/tans/momo/releases
+
 
 ## Installation
 
@@ -16,20 +22,6 @@ momo is a web applicaiton, you can install it in your server or computer.
 `npm start`
 
 visit with your bowser at `http://localhost:3308`
-
-## Configuration
-
-```
-#config.json
-{
-    "basicauth": {
-        "name": "",
-        "password": ""
-    },
-    "port": 3308,  //listen port
-    "mongourl": "localhost/test", //  mongo url
-}
-```
 
 
 ## ScreenShot
