@@ -4,11 +4,13 @@ const Koa = require("koa");
 const path = require("path");
 const serve = require("koa-static");
 const koaBody = require("koa-body");
+var open = require("open");
+
 const router = require("./router");
 const app = new Koa();
 
 const pug = new Pug({
-  viewPath: path.resolve(__dirname, "./views"),
+  viewPath: path.join(__dirname, "views"),
   locals: {
     /* variables and helpers */
   },
@@ -49,4 +51,5 @@ app.use(koaBody({}));
 app.use(router.routes());
 app.listen(28018, function() {
   console.log(`listening on port 28018`);
+  open("http://localhost:28018");
 });

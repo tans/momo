@@ -27,9 +27,13 @@
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "monk": "^7.1.2",
+    "open": "^7.0.2",
     "pug": "^2.0.4"
   },
   "pkg": {
-    "assets": ["view/*", "public/**/*","public/***/*"]
+    "assets": [
+      "views/*",
+      "public/**/*"
+    ]
   }
 }
