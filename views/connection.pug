@@ -27,11 +27,12 @@ block main
                     try{
 
                         histories.push($('#con-input').val())
-                        histories = _.uniq(histories)
+                        histories = _.uniq(_.filter(histories))
+
                         localStorage.setItem('histories', JSON.stringify(histories))
                     }catch(err){console.log(err)}
-                        location.href='/'
                     })
+                    location.href='/'
                 }
             }
         })
