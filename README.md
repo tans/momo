@@ -25,8 +25,7 @@ visit with your bowser at `http://localhost:28018`
 
 
 ## ScreenShot
-
-![index screenshot](/public/screenshot/login.jpg)
+ 
 ![index screenshot](/public/screenshot/index.png)
 ![index screenshot](/public/screenshot/col.png)
 
